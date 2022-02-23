@@ -9,10 +9,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class ValidationsDemo {
-	//isSelected
+public class ValidationsDemo4 {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
 		WebDriverManager.chromedriver().setup();
 		
@@ -24,15 +23,17 @@ public class ValidationsDemo {
 		
 		driver.get("https://courses.letskodeit.com/practice");
 		
-		WebElement bmwradio=driver.findElement(By.id("bmwradio"));
+		WebElement header=driver.findElement(By.xpath("//h1[text()='Practice Page']"));
 		
-		
-		  if(bmwradio.isSelected()) {
-		  
-		  System.out.println("BMW already selected"); }
-		  else { bmwradio.click();
-		  System.out.println("now successfully clicked on bmw radio button"); }
-		 
+		if(header.isDisplayed()) {
+			String headertext=header.getText();
+			System.out.println("Displayed text is::" +headertext);
+		}
+		else {
+			System.out.println("unable to get text");
+		}
+		Thread.sleep(2000);
+		driver.close();
 	}
 
 }

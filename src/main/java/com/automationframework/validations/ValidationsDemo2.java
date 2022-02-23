@@ -9,8 +9,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class ValidationsDemo {
-	//isSelected
+public class ValidationsDemo2 {
+	
+	//isEnabled
 	
 	public static void main(String[] args) {
 		
@@ -22,17 +23,21 @@ public class ValidationsDemo {
 		
 		driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
 		
-		driver.get("https://courses.letskodeit.com/practice");
+		driver.get("https://github.com/password_reset");
 		
-		WebElement bmwradio=driver.findElement(By.id("bmwradio"));
+		WebElement forgotpassword=driver.findElement(By.xpath("//input[contains(@value,'Send password')]"));
 		
-		
-		  if(bmwradio.isSelected()) {
-		  
-		  System.out.println("BMW already selected"); }
-		  else { bmwradio.click();
-		  System.out.println("now successfully clicked on bmw radio button"); }
-		 
+		if(forgotpassword.isEnabled()) {
+			
+			forgotpassword.click();
+			
+			System.out.println("successfully clicked on forgot password button");
+		}
+		else {
+			System.out.println("forgot password button is not enabled");
+		}
 	}
+	
+	
 
 }
